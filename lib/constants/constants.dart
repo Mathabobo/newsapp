@@ -1,0 +1,12 @@
+class ApiUrls {
+  static const baseUrl =
+      'http://api.mediastack.com/v1/news?access_key=e15d01423b994808a73a56aba26c9ee3';
+
+  // static const baseUrl =
+  //     'https://api.thenewsapi.com/v1/news/all?api_token=i1Hx9CQIY0HQMpL5bDG4v8QRB4JxwDC1teiVlSMf';
+}
+
+// String bookmark = 'lib/icons/bookmark.png';
+// String home = 'lib/icons/home.png';
+// String discover = 'lib/icons/discover.png';
+// String setting = 'lib/icons/setting.png';
