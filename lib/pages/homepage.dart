@@ -22,6 +22,7 @@ class Home extends ConsumerWidget {
 
     return SafeArea(
       child: Scaffold(
+        // extendBody: true,
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -36,21 +37,43 @@ class Home extends ConsumerWidget {
                   return NewsCard(data: news.data![index]);
                 },
               ),
-        bottomNavigationBar:
-            const GNav(mainAxisAlignment: MainAxisAlignment.center, tabs: [
-          GButton(
-            icon: MyIcons.home,
-            text: ' Home',
-          ),
-          GButton(
-            icon: MyIcons.discover,
-            text: ' Discover',
-          ),
-          GButton(
-            icon: MyIcons.bookmark,
-            text: ' Bookmark',
-          )
-        ]),
+        bottomNavigationBar: Container(
+          clipBehavior: Clip.antiAlias,
+          margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+          child: GNav(
+              padding: const EdgeInsets.all(20),
+              gap: 2,
+              // tabBackgroundColor: Colors.black,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              backgroundColor: Colors.black,
+              tabs: [
+                GButton(
+                  // backgroundColor: Colors.grey.shade300,
+                  icon: MyIcons.home,
+                  // text: ' Home',
+                  iconColor: Colors.grey.shade600,
+                  textColor: Colors.grey[300],
+                  iconActiveColor: Colors.grey[300],
+                ),
+                GButton(
+                  // backgroundColor: Colors.grey.shade300,
+                  icon: MyIcons.discover,
+                  // text: ' Discover',
+                  iconColor: Colors.grey.shade600,
+                  textColor: Colors.grey[300],
+                  iconActiveColor: Colors.grey[300],
+                ),
+                GButton(
+                  // backgroundColor: Colors.grey.shade300,
+                  icon: MyIcons.bookmark,
+                  // text: ' Bookmark',
+                  iconColor: Colors.grey.shade600,
+                  textColor: Colors.grey[300],
+                  iconActiveColor: Colors.grey[300],
+                )
+              ]),
+        ),
       ),
     );
   }

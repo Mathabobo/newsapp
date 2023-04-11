@@ -29,3 +29,22 @@ class NewsNotifier extends StateNotifier<NewsState> {
 
 final newsProvider =
     StateNotifierProvider<NewsNotifier, NewsState>((ref) => NewsNotifier());
+
+
+
+    
+
+// class BoredSuggestionNotifier extends StateNotifier<NewsModel> {
+//   BoredSuggestionNotifier() : super(NewsModel(data: [])) {
+//     boredSuggestion();
+//   }
+
+//   Future boredSuggestion() async {
+//     final response = await NewsService().fetchNews();
+//     final news = NewsModel.fromJson(response);
+//     return news;
+//   }
+// }
+
+// final newsProvider = StateNotifierProvider<BoredSuggestionNotifier, NewsModel>(
+//     (ref) => BoredSuggestionNotifier());
