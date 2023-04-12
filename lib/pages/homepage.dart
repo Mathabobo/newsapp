@@ -20,59 +20,161 @@ class Home extends ConsumerWidget {
     bool isLoading = ref.watch(newsProvider).isLoading;
     log(isLoading.toString());
 
-    return SafeArea(
-      child: Scaffold(
-        // extendBody: true,
-        extendBodyBehindAppBar: true,
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-        ),
-        body: isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : ListView.builder(
-                itemCount: news.data!.length,
-                itemBuilder: (context, index) {
-                  return NewsCard(data: news.data![index]);
-                },
-              ),
-        bottomNavigationBar: Container(
-          clipBehavior: Clip.antiAlias,
-          margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-          child: GNav(
-              padding: const EdgeInsets.all(20),
-              gap: 2,
-              // tabBackgroundColor: Colors.black,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              backgroundColor: Colors.black,
-              tabs: [
-                GButton(
-                  // backgroundColor: Colors.grey.shade300,
-                  icon: MyIcons.home,
-                  // text: ' Home',
-                  iconColor: Colors.grey.shade600,
-                  textColor: Colors.grey[300],
-                  iconActiveColor: Colors.grey[300],
-                ),
-                GButton(
-                  // backgroundColor: Colors.grey.shade300,
-                  icon: MyIcons.discover,
-                  // text: ' Discover',
-                  iconColor: Colors.grey.shade600,
-                  textColor: Colors.grey[300],
-                  iconActiveColor: Colors.grey[300],
-                ),
-                GButton(
-                  // backgroundColor: Colors.grey.shade300,
-                  icon: MyIcons.bookmark,
-                  // text: ' Bookmark',
-                  iconColor: Colors.grey.shade600,
-                  textColor: Colors.grey[300],
-                  iconActiveColor: Colors.grey[300],
-                )
-              ]),
+    return DefaultTabController(
+      length: 6,
+      child: SafeArea(
+        child: Scaffold(
+          // extendBody: true,
+          // extendBodyBehindAppBar: true,
+          backgroundColor: Colors.white,
+
+          body: Column(
+            children: [
+              TabBar(
+                  indicatorSize: TabBarIndicatorSize.label,
+                  labelPadding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  isScrollable: true,
+                  padding: const EdgeInsets.all(5),
+                  indicator: BoxDecoration(
+                      color: Colors.black,
+                      border: Border.all(
+                          width: 0.5,
+                          color: Colors.grey,
+                          style: BorderStyle.solid),
+                      borderRadius: BorderRadius.circular(50)),
+                  tabs: [
+                    Tab(
+                        height: 35,
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 0.5,
+                                  color: Colors.grey,
+                                  style: BorderStyle.solid),
+                              borderRadius: BorderRadius.circular(50)),
+                          child: const Text(
+                            'General',
+                            style: TextStyle(color: Colors.white, fontSize: 13),
+                          ),
+                        )),
+                    Tab(
+                        height: 35,
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 0.5,
+                                  color: Colors.grey,
+                                  style: BorderStyle.solid),
+                              borderRadius: BorderRadius.circular(50)),
+                          child: const Text('Politics'),
+                        )),
+                    Tab(
+                        height: 35,
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 0.5,
+                                  color: Colors.grey,
+                                  style: BorderStyle.solid),
+                              borderRadius: BorderRadius.circular(50)),
+                          child: const Text('Fashion'),
+                        )),
+                    Tab(
+                        height: 35,
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 0.5,
+                                  color: Colors.grey,
+                                  style: BorderStyle.solid),
+                              borderRadius: BorderRadius.circular(50)),
+                          child: const Text('LifeStyle'),
+                        )),
+                    Tab(
+                      height: 35,
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                width: 0.5,
+                                color: Colors.grey,
+                                style: BorderStyle.solid),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: const Text('Sport'),
+                      ),
+                    ),
+                    Tab(
+                      height: 35,
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                width: 0.5,
+                                color: Colors.grey,
+                                style: BorderStyle.solid),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: const Text('Business'),
+                      ),
+                    ),
+                  ]),
+              Expanded(
+                child: isLoading
+                    ? const Center(child: CircularProgressIndicator())
+                    : ListView.builder(
+                        itemCount: news.data!.length,
+                        itemBuilder: (context, index) {
+                          return NewsCard(data: news.data![index]);
+                        },
+                      ),
+              )
+            ],
+          ),
+          bottomNavigationBar: Container(
+            clipBehavior: Clip.antiAlias,
+            margin: const EdgeInsets.only(left: 15, right: 15, bottom: 10),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+            child: GNav(
+                padding: const EdgeInsets.fromLTRB(5, 15, 5, 15),
+                gap: 1,
+                // tabBackgroundColor: Colors.black,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                backgroundColor: Colors.black,
+                tabs: [
+                  GButton(
+                    // backgroundColor: Colors.grey.shade300,
+                    icon: MyIcons.home,
+                    iconSize: 22,
+                    // text: ' Home',
+                    iconColor: Colors.grey.shade600,
+                    textColor: Colors.grey[300],
+                    iconActiveColor: Colors.grey[300],
+                  ),
+                  GButton(
+                    // backgroundColor: Colors.grey.shade300,
+                    icon: MyIcons.discover,
+                    iconSize: 22,
+
+                    // text: ' Discover',
+                    iconColor: Colors.grey.shade600,
+                    textColor: Colors.grey[300],
+                    iconActiveColor: Colors.grey[300],
+                  ),
+                  GButton(
+                    // backgroundColor: Colors.grey.shade300,
+                    icon: MyIcons.bookmark,
+                    iconSize: 22,
+
+                    // text: ' Bookmark',
+                    iconColor: Colors.grey.shade600,
+                    textColor: Colors.grey[300],
+                    iconActiveColor: Colors.grey[300],
+                  )
+                ]),
+          ),
         ),
       ),
     );

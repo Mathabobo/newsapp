@@ -13,12 +13,14 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(8),
       margin: const EdgeInsets.only(top: 5, left: 10, right: 10),
-      height: 170,
-      decoration: BoxDecoration(
-        boxShadow: neoDesign,
-        borderRadius: BorderRadius.circular(20),
+      height: 160,
+      decoration: const BoxDecoration(
+        border: Border(
+            bottom: BorderSide(
+                color: Colors.grey, width: 0.5, style: BorderStyle.solid)),
+        // borderRadius: BorderRadius.circular(20),
         color: Colors.white,
       ),
       child: Column(
@@ -28,24 +30,23 @@ class NewsCard extends StatelessWidget {
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
                       data.category.toString().toUpperCase(),
-                      style: GoogleFonts.sen(
+                      style: GoogleFonts.poppins(
                           letterSpacing: 1,
                           color: Colors.red.shade700,
-                          fontSize: 12,
+                          fontSize: 11,
                           fontWeight: FontWeight.bold),
                       maxLines: 1,
                       textAlign: TextAlign.start,
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 5),
                     Text(
                       data.title.toString(),
                       style: GoogleFonts.poppins(
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold),
                       softWrap: true,
                       maxLines: 3,
@@ -54,7 +55,7 @@ class NewsCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 25),
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: CachedNetworkImage(
@@ -67,8 +68,8 @@ class NewsCard extends StatelessWidget {
                   errorWidget: (context, url, error) {
                     return const Icon(Icons.error);
                   },
-                  width: 100,
-                  height: 100,
+                  width: 80,
+                  height: 80,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -78,27 +79,36 @@ class NewsCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                children: const [
-                  Text('4h ago  .  '),
-                  Text('21 min read'),
+                children: [
+                  Text(
+                    '4h ago  .  ',
+                    style: TextStyle(color: Colors.grey[600]),
+                  ),
+                  Text(
+                    '21 min read',
+                    style: TextStyle(color: Colors.grey[600]),
+                  ),
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
                     alignment: Alignment.centerRight,
                     onPressed: () {},
-                    icon: const Icon(
+                    icon: Icon(
                       MyIcons.bookmark,
+                      size: 22,
+                      color: Colors.grey[600],
                     ),
-                  ),
-                  const SizedBox(
-                    width: 20,
                   ),
                   IconButton(
                       alignment: Alignment.centerRight,
                       onPressed: () {},
-                      icon: const Icon(Icons.more_horiz_outlined))
+                      icon: Icon(
+                        Icons.more_horiz_outlined,
+                        color: Colors.grey[600],
+                      ))
                 ],
               )
             ],
